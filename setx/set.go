@@ -21,41 +21,41 @@ func NewSet[T comparable](size int) *Set[T] {
 	}
 }
 
-// Insert 插入
+// Insert 插入元素
 func (s *Set[T]) Insert(key T) {
 	s.mp[key] = struct{}{}
 }
 
-// Size 元素个数
+// Size 返回元素个数
 func (s *Set[T]) Size() int {
 	return len(s.mp)
 }
 
-// Empty 是否为空集
+// Empty 判断集合是否为空集
 func (s *Set[T]) Empty() bool {
 	return len(s.mp) == 0
 }
 
-// Clear 清空
+// Clear 清空集合
 func (s *Set[T]) Clear() {
 	s.mp = make(map[T]struct{})
 }
 
-// Erase 删除
+// Erase 删除元素
 func (s *Set[T]) Erase(key T) {
 	delete(s.mp, key)
 }
 
-// Exist 查询
+// Exist 查询元素
 func (s *Set[T]) Exist(key T) bool {
 	_, ok := s.mp[key]
 	return ok
 }
 
-// Keys 返回所有元素
+// Keys 返回所有元素（无序）
 func (s *Set[T]) Keys() []T {
-	result := make([]T, len(s.mp))
-	for k, _ := range s.mp {
+	result := make([]T, 0, len(s.mp))
+	for k := range s.mp {
 		result = append(result, k)
 	}
 	return result
