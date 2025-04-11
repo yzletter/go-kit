@@ -6,8 +6,14 @@
 
 ## 数据结构
 
-- Slice：（未实现）
-  - UpperBound：返回大于 x 的最小数的下标
+- Slice：
+  - Insert：在指定位置插入一个元素
+  - Find：查找一个元素
+  - Reverse：返回翻转后的切片
+  - ReverseItSelf：翻转自身
+  - UpperBound：返回有序 slice 中大于 x 的最小值的下标
+  - LowerBound：返回有序 slice 中大于等于 x 的最小值的下标
+  - Unique：Slice 去重
 
 - Set：
   - 集合(NewSet)
@@ -15,7 +21,10 @@
 - Queue：
   - 普通队列（NewQueue）
   - 堆（NewPriorityQueue）：大根堆 / 小根堆取决于传入的 compareFunc
-  - 双端队列（Dequeue）（未实现）
+  - 普通双端队列（Dequeue）（未实现）
 
 - Stack：
   - 普通栈（NewStack）
+
+- Tuple:
+  - 二元组（Pair)

@@ -15,9 +15,9 @@ type Set[T comparable] struct {
 }
 
 // NewSet 构造函数
-func NewSet[T comparable](size int) *Set[T] {
+func NewSet[T comparable]() *Set[T] {
 	return &Set[T]{
-		mp: make(map[T]struct{}, size),
+		mp: make(map[T]struct{}),
 	}
 }
 

@@ -2,35 +2,36 @@ package main
 
 import (
 	"fmt"
-	"go-kit/queuex"
+	"go-kit/slicex"
 )
 
 func main() {
-	heap := queuex.NewPriorityQueue[int](func(a, b int) bool {
-		return a > b
-	})
 
 	a := []int{13, 5, 3, 7, 8, 10}
+	a, _ = slicex.Insert(a, 1, 0)
+	a, _ = slicex.Insert(a, 1, 5)
+	a, _ = slicex.Insert(a, 1, len(a))
+	fmt.Println(a)
 
-	for _, v := range a {
-		heap.Push(v)
-	}
+	b := []int{1, 2, 4, 5, 16, 18}
+	idx1 := slicex.UpperBound(b, 4)
+	idx2 := slicex.LowerBound(b, 4)
+	fmt.Println(idx1)
+	fmt.Println(idx2)
 
-	for heap.Size() > 0 {
-		v, _ := heap.Top()
-		fmt.Print(v, ", ")
-		heap.Pop()
-	}
+	c := []int{1, 4, 2, 2, 4, 5, 16, 2}
+	c = slicex.Unique(c)
+	fmt.Println(c)
 
-	//fmt.Println(heap.Size())
-	//fmt.Println(heap.Size())
-	//fmt.Println(heap.Empty())
-	//heap.Clear()
-	//fmt.Println(heap.Size())
+	d := slicex.Reverse(c)
+	fmt.Println(d)
 
-	//v, _ := heap.Top()
-	//fmt.Println(v)
-	//heap.Pop()
-	//v, _ = heap.Top()
-	//fmt.Println(v)
+	slicex.ReverseItSelf(d)
+	fmt.Println(d)
+
+	a = []int{13, 5, 3, 7, 8, 10}
+	idx3, _ := slicex.Find(a, 3)
+	idx4, _ := slicex.Find(a, 17)
+	fmt.Println(idx3)
+	fmt.Println(idx4)
 }
