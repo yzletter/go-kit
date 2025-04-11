@@ -2,21 +2,35 @@ package main
 
 import (
 	"fmt"
-	"go-kit/stackx"
+	"go-kit/queuex"
 )
 
 func main() {
-	stk := stackx.NewStack[int]()
+	heap := queuex.NewPriorityQueue[int](func(a, b int) bool {
+		return a > b
+	})
 
-	for i := 0; i < 10; i++ {
-		stk.Push(i)
+	a := []int{13, 5, 3, 7, 8, 10}
+
+	for _, v := range a {
+		heap.Push(v)
 	}
 
-	fmt.Println(stk.Top())
-	fmt.Println(stk.Size())
-	stk.Pop()
-	fmt.Println(stk.Size())
-	stk.Clear()
-	fmt.Println(stk.Size())
+	for heap.Size() > 0 {
+		v, _ := heap.Top()
+		fmt.Print(v, ", ")
+		heap.Pop()
+	}
 
+	//fmt.Println(heap.Size())
+	//fmt.Println(heap.Size())
+	//fmt.Println(heap.Empty())
+	//heap.Clear()
+	//fmt.Println(heap.Size())
+
+	//v, _ := heap.Top()
+	//fmt.Println(v)
+	//heap.Pop()
+	//v, _ = heap.Top()
+	//fmt.Println(v)
 }
