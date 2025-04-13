@@ -2,7 +2,7 @@ package queuex
 
 import "errors"
 
-type queue[T comparable] interface {
+type queue[T any] interface {
 	Pop()
 	Front() (T, error)
 	Push(val T)
@@ -12,11 +12,11 @@ type queue[T comparable] interface {
 	Clear()
 }
 
-type Queue[T comparable] struct {
+type Queue[T any] struct {
 	data []T
 }
 
-func NewQueue[T comparable]() *Queue[T] {
+func NewQueue[T any]() *Queue[T] {
 	return &Queue[T]{
 		data: make([]T, 0),
 	}

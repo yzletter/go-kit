@@ -94,6 +94,5 @@ func Find[T comparable](target []T, val T) (int, error) {
 			return i, nil
 		}
 	}
-
 	return -1, errors.New("元素不存在")
 }

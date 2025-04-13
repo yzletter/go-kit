@@ -6,7 +6,7 @@
 
 ## 数据结构
 
-- Slice：
+- Slice 辅助方法：
   - Insert：在指定位置插入一个元素
   - Find：查找一个元素
   - Reverse：返回翻转后的切片
@@ -21,10 +21,10 @@
 - Queue：
   - 普通队列（NewQueue）
   - 堆（NewPriorityQueue）：大根堆 / 小根堆取决于传入的 compareFunc
-  - 普通双端队列（Dequeue）（未实现）
+  - 普通双端队列（Deque）（未实现）
 
 - Stack：
   - 普通栈（NewStack）
 
 - Tuple:
-  - 二元组（Pair)
+  - 二元组（Pair)（未实现）
