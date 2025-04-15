@@ -25,7 +25,7 @@ func (heap *PriorityQueue[T]) Pop() {
 	heap.data[0] = heap.data[heap.Size()-1] // 将最后一个数放到堆顶
 	heap.data = heap.data[:heap.Size()-1]   // 删除最后一个数
 	// 更新堆
-	heap.Update(0)
+	heap.update(0)
 }
 
 // Top 取堆顶元素
@@ -55,8 +55,23 @@ func (heap *PriorityQueue[T]) Push(val T) {
 	}
 }
 
-// Update 将 idx 号结点沉底
-func (heap *PriorityQueue[T]) Update(idx int) {
+// Size 返回堆中元素个数
+func (heap *PriorityQueue[T]) Size() int {
+	return len(heap.data)
+}
+
+// Empty 判断堆空
+func (heap *PriorityQueue[T]) Empty() bool {
+	return len(heap.data) == 0
+}
+
+// Clear 清空堆
+func (heap *PriorityQueue[T]) Clear() {
+	heap.data = make([]T, 0)
+}
+
+// update 将 idx 号结点沉底
+func (heap *PriorityQueue[T]) update(idx int) {
 	n := heap.Size()
 
 	target := idx // 最小的节点下标
@@ -78,19 +93,4 @@ func (heap *PriorityQueue[T]) Update(idx int) {
 		heap.data[idx], heap.data[target] = heap.data[target], heap.data[idx]
 		idx = target
 	}
-}
-
-// Size 返回堆中元素个数
-func (heap *PriorityQueue[T]) Size() int {
-	return len(heap.data)
-}
-
-// Empty 判断堆空
-func (heap *PriorityQueue[T]) Empty() bool {
-	return len(heap.data) == 0
-}
-
-// Clear 清空堆
-func (heap *PriorityQueue[T]) Clear() {
-	heap.data = make([]T, 0)
 }
