@@ -2,21 +2,22 @@
 
 ## GO泛型工具库
 
-用于重构在业务代码中的冗余、模板代码。该工具库提供了方便的辅助方法和数据结构。
+用于重构在业务代码中的冗余、模板代码。该工具库提供了具备缩容的高性能辅助方法和数据结构。
 
 注意：当前版本并发不安全
 
 ## 数据结构
 
-- Slice 辅助方法：
-  - Insert：在指定位置插入一个元素
-  - Delete：删除指定位置的元素
-  - Find：查找一个元素
-  - Reverse：返回翻转后的切片
-  - ReverseItSelf：翻转自身
-  - UpperBound：返回有序 slice 中大于 x 的最小值的下标
-  - LowerBound：返回有序 slice 中大于等于 x 的最小值的下标
-  - Unique：Slice 去重
+- Slice：
+  - 辅助方法
+      - Insert：在指定位置插入一个元素
+      - Delete：删除指定位置的元素
+      - Find：查找一个元素
+      - Reverse：返回翻转后的切片
+      - ReverseItSelf：翻转自身
+      - UpperBound：返回有序 slice 中大于 x 的最小值的下标
+      - LowerBound：返回有序 slice 中大于等于 x 的最小值的下标
+      - Unique：Slice 去重
 - Set：
   - 集合(NewSet)
     - Insert：插入元素到集合

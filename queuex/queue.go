@@ -1,6 +1,9 @@
 package queuex
 
-import "errors"
+import (
+	"errors"
+	"github.com/yzletter/go-kit/slicex"
+)
 
 type queue[T any] interface {
 	Pop()
@@ -26,6 +29,7 @@ func NewQueue[T any]() *Queue[T] {
 func (q *Queue[T]) Pop() {
 	if !q.Empty() {
 		q.data = q.data[1:]
+		q.data = slicex.Shrink(q.data)
 	}
 }
 

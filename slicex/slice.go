@@ -2,7 +2,6 @@ package slicex
 
 import (
 	"errors"
-	"fmt"
 	"github.com/yzletter/go-kit/setx"
 	"golang.org/x/exp/constraints"
 )
@@ -22,6 +21,7 @@ func Insert[T any](target []T, val T, idx int) ([]T, error) {
 	}
 	// 将 val 插入到 idx
 	target[idx] = val
+
 	return target, nil
 }
 
@@ -35,7 +35,9 @@ func Delete[T any](target []T, idx int) ([]T, error) {
 		target[i] = target[i+1]
 	}
 	target = target[:length-1]
-	fmt.Println(target)
+
+	target = Shrink(target)
+
 	return target, nil
 }
 
@@ -110,4 +112,38 @@ func Find[T comparable](target []T, val T) (int, error) {
 		}
 	}
 	return -1, errors.New("元素不存在")
+}
+
+// Shrink 对切片进行缩容
+func Shrink[T any](tartget []T) []T {
+	newCapacity, ok := calCapacity(tartget)
+
+	// 无需缩容
+	if !ok {
+		return tartget
+	}
+
+	newSlice := make([]T, 0, newCapacity)
+	newSlice = append(newSlice, tartget...)
+	return newSlice
+}
+
+// calCapacity 计算切片容量
+func calCapacity[T any](target []T) (res int, ok bool) {
+	length, capacity := len(target), cap(target) // 计算数组当前的长度和容量
+
+	// 容量过小，无需考虑
+	if capacity < 256 {
+		return 0, false
+	}
+
+	// 中等容量
+	if capacity < 1024 {
+		res = res / 2
+	} else { // 大容量
+		res = (4*capacity - 3*256) / 5
+	}
+
+	res = max(res, length+5)
+	return res, false
 }

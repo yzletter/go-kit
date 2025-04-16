@@ -2,6 +2,7 @@ package queuex
 
 import (
 	"errors"
+	"github.com/yzletter/go-kit/slicex"
 	"golang.org/x/exp/constraints"
 )
 
@@ -26,6 +27,7 @@ func (heap *PriorityQueue[T]) Pop() {
 	heap.data = heap.data[:heap.Size()-1]   // 删除最后一个数
 	// 更新堆
 	heap.update(0)
+	heap.data = slicex.Shrink(heap.data)
 }
 
 // Top 取堆顶元素

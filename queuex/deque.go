@@ -18,11 +18,13 @@ func NewDeque[T any]() *deque[T] {
 // PopFront 弹出队头
 func (dq *deque[T]) PopFront() {
 	dq.data = dq.data[1:]
+	dq.data = slicex.Shrink(dq.data)
 }
 
 // PopBack 弹出队尾
 func (dq *deque[T]) PopBack() {
 	dq.data = dq.data[:dq.Size()-1]
+	dq.data = slicex.Shrink(dq.data)
 }
 
 // PushFront 插入队头

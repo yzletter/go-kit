@@ -1,6 +1,9 @@
 package stackx
 
-import "errors"
+import (
+	"errors"
+	"github.com/yzletter/go-kit/slicex"
+)
 
 type stack[T comparable] interface {
 	Push(val T)
@@ -39,6 +42,7 @@ func (stk *Stack[T]) Top() (T, error) {
 func (stk *Stack[T]) Pop() {
 	if !stk.Empty() {
 		stk.data = stk.data[:stk.Size()-1]
+		stk.data = slicex.Shrink(stk.data)
 	}
 }
 
