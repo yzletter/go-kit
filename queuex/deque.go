@@ -2,7 +2,7 @@ package queuex
 
 import (
 	"errors"
-	"go-kit/slicex"
+	"github.com/yzletter/go-kit/slicex"
 )
 
 type deque[T any] struct {

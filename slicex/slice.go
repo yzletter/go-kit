@@ -2,7 +2,8 @@ package slicex
 
 import (
 	"errors"
-	"go-kit/setx"
+	"fmt"
+	"github.com/yzletter/go-kit/setx"
 	"golang.org/x/exp/constraints"
 )
 
@@ -21,6 +22,20 @@ func Insert[T any](target []T, val T, idx int) ([]T, error) {
 	}
 	// 将 val 插入到 idx
 	target[idx] = val
+	return target, nil
+}
+
+// Delete 删除下标
+func Delete[T any](target []T, idx int) ([]T, error) {
+	if idx < 0 || idx > len(target)-1 {
+		return nil, errors.New("删除非法位置")
+	}
+	length := len(target)
+	for i := idx; i <= length-2; i++ {
+		target[i] = target[i+1]
+	}
+	target = target[:length-1]
+	fmt.Println(target)
 	return target, nil
 }
 

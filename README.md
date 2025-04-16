@@ -10,6 +10,7 @@
 
 - Slice 辅助方法：
   - Insert：在指定位置插入一个元素
+  - Delete：删除指定位置的元素
   - Find：查找一个元素
   - Reverse：返回翻转后的切片
   - ReverseItSelf：翻转自身
