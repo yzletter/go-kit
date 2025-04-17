@@ -65,13 +65,13 @@
   - GCD: 求 a, b 最大公约数
   - LCM: 求 a, b 最小公倍数
   - IsPrime: 判断素数
-  - QMI: 求 a ^ k % p（未实现）
+  - QMI: 求 a ^ k % p
 - Map: (mapx)
   - 辅助方法
-    - Keys: 返回 map 中的所有键（未实现）
-    - Values: 返回 map 中的所有值（未实现）
-    - KeysValues: 返回 map 的键和值（未实现）
-    - ToMap: K、V 切片转 map（未实现）
+    - Keys: 返回 map 中的所有键
+    - Values: 返回 map 中的所有值
+    - KeysValues: 返回 map 的键和值
+    - ToMap: K、V 切片转 map
 - 链表: (listx)
   - 双向链表（带头结点）
     - InsertToHead: 头插法（未实现）
