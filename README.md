@@ -74,15 +74,17 @@
     - ToMap: K、V 切片转 map
 - 链表: (listx)
   - 双向链表（带头结点）
-    - InsertToHead: 头插法（未实现）
-    - InsertToTail: 尾插法（未实现）
-    - Insert: 插入到指定位置（未实现）
-    - Delete: 删除链表指定位置（未实现）
+    - Len: 返回链表长度
+    - Values: 返回链表所有节点值构成的切片
+    - InsertToHead: 头插法
+    - InsertToTail: 尾插法
+    - Insert: 插入到指定位置
+    - Delete: 删除链表指定位置
+    - Sort: 链表排序
     - Reverse: 返回翻转后的链表（未实现）
     - ReverseItSelf: 翻转链表自身（未实现）
     - MergeTwoLists: 合并两个有序链表（未实现）
     - HasCycle: 是否有环（未实现）
-    - Sort: 链表排序（未实现）
     - UniqueByOrder: 有序链表去重（未实现）
     - Unique: 链表去重（未实现）
 - 树: (treex)
