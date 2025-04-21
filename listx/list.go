@@ -9,32 +9,11 @@ import (
 // Sort 链表排序
 func Sort[T constraints.Ordered](l *LinkedList[T]) {
 	// 将节点存入数组
-	nodes := nodes(l)
+	nodes := nodesSlice(l)
 	// 排序
 	sort.Slice(nodes, func(i, j int) bool {
 		return nodes[i].val < nodes[j].val
 	})
-	// 更新指向
-	for i := 0; i < len(nodes); i++ {
-		if i != len(nodes)-1 {
-			nodes[i].next = nodes[i+1]
-		}
-		if i != 0 {
-			nodes[i].prev = nodes[i-1]
-		}
-	}
-	// 构建循环链表
-	nodes[0].prev = l.head
-	l.head.next = nodes[0]
-	nodes[len(nodes)-1].next = l.head
-	l.head.prev = nodes[len(nodes)-1]
-}
-
-// ReverseItSelf 翻转链表自身
-func ReverseItSelf[T any](l *LinkedList[T]) {
-	// 将节点存入数组
-	nodes := nodes(l)
-	slicex.ReverseItSelf(nodes)
 	// 更新指向
 	for i := 0; i < len(nodes); i++ {
 		if i != len(nodes)-1 {
@@ -61,13 +40,25 @@ func Reverse[T any](l *LinkedList[T]) *LinkedList[T] {
 	return res
 }
 
-// nodes 将链表节点存入切片
-func nodes[T any](l *LinkedList[T]) []*node[T] {
-	nodes := make([]*node[T], 0)
-	for i := l.head.next; i != l.head; i = i.next {
-		nodes = append(nodes, i)
+// ReverseItSelf 翻转链表自身
+func ReverseItSelf[T any](l *LinkedList[T]) {
+	// 将节点存入数组
+	nodes := nodesSlice(l)
+	slicex.ReverseItSelf(nodes)
+	// 更新指向
+	for i := 0; i < len(nodes); i++ {
+		if i != len(nodes)-1 {
+			nodes[i].next = nodes[i+1]
+		}
+		if i != 0 {
+			nodes[i].prev = nodes[i-1]
+		}
 	}
-	return nodes
+	// 构建循环链表
+	nodes[0].prev = l.head
+	l.head.next = nodes[0]
+	nodes[len(nodes)-1].next = l.head
+	l.head.prev = nodes[len(nodes)-1]
 }
 
 // UniqueByOrder 对排序后的链表进行去重
@@ -97,21 +88,4 @@ func Unique[T comparable](l *LinkedList[T]) *LinkedList[T] {
 
 	res := NewLinkedListFromSlice(newNodes)
 	return res
-}
-
-// insertBefore 前插
-func insertBefore[T any](a, b *node[T]) {
-	a.next = b
-	a.prev = b.prev
-	b.prev.next = a
-	b.prev = a
-}
-
-// deleteNode 删除指定节点
-func deleteNode[T any](node *node[T]) {
-	// 删除节点
-	node.next.prev = node.prev
-	node.prev.next = node.next
-	node.next = nil
-	node.prev = nil
 }

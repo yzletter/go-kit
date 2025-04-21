@@ -4,12 +4,6 @@ import (
 	"github.com/yzletter/go-kit/gokit/errs"
 )
 
-type node[T any] struct {
-	next *node[T]
-	prev *node[T]
-	val  T
-}
-
 type list[T any] interface {
 	Len() int
 	Values() []T
@@ -170,7 +164,7 @@ func (l *LinkedList[T]) findNode(idx int) *node[T] {
 	return nowNode
 }
 
-// newNode 创建一个新节点
-func newNode[T any](val T) *node[T] {
-	return &node[T]{val: val}
+// lastNode 返回最后一个节点
+func (l *LinkedList[T]) lastNode() *node[T] {
+	return l.head.prev
 }
