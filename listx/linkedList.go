@@ -20,11 +20,6 @@ type list[T any] interface {
 	Update(idx int, val T) error
 	Get(idx int) (T, error)
 	Clear()
-
-	Reverse()
-	ReverseItSelf()
-	UniqueByOrder()
-	Unique()
 }
 
 // LinkedList 带头结点的双向循环链表
@@ -118,10 +113,8 @@ func (l *LinkedList[T]) Delete(idx int) error {
 
 	nowNode := l.findNode(idx) // 查找节点
 	// 删除节点
-	nowNode.next.prev = nowNode.prev
-	nowNode.prev.next = nowNode.next
-	nowNode.next = nil
-	nowNode.prev = nil
+	deleteNode(nowNode)
+
 	l.length--
 	return nil
 }
@@ -150,14 +143,6 @@ func (l *LinkedList[T]) Get(idx int) (T, error) {
 func (l *LinkedList[T]) Clear() {
 	l.head.next = l.head
 	l.head.prev = l.head
-}
-
-// insertBefore 前插
-func insertBefore[T any](a, b *node[T]) {
-	a.next = b
-	a.prev = b.prev
-	b.prev.next = a
-	b.prev = a
 }
 
 // checkInsertIndex 判断插入下标合法性（0 ~ n)

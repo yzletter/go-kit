@@ -81,12 +81,10 @@
     - Insert: 插入到指定位置
     - Delete: 删除链表指定位置
     - Sort: 链表排序
-    - Reverse: 返回翻转后的链表（未实现）
-    - ReverseItSelf: 翻转链表自身（未实现）
-    - MergeTwoLists: 合并两个有序链表（未实现）
-    - HasCycle: 是否有环（未实现）
-    - UniqueByOrder: 有序链表去重（未实现）
-    - Unique: 链表去重（未实现）
+    - Reverse: 返回翻转后的链表
+    - ReverseItSelf: 翻转链表自身
+    - UniqueByOrder: 有序链表去重
+    - Unique: 链表去重
 - 树: (treex)
   - 线段树: 
     - 求区间和（未实现）
