@@ -1,7 +1,7 @@
 package stackx
 
 import (
-	"errors"
+	"github.com/yzletter/go-kit/gokit/errs"
 	"github.com/yzletter/go-kit/slicex"
 )
 
@@ -35,7 +35,7 @@ func (stk *Stack[T]) Top() (T, error) {
 		return stk.data[stk.Size()-1], nil
 	}
 	var t T
-	return t, errors.New("栈为空")
+	return t, errs.ErrEmpty
 }
 
 // Pop 栈顶弹出

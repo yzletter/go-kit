@@ -1,7 +1,7 @@
 package queuex
 
 import (
-	"errors"
+	"github.com/yzletter/go-kit/gokit/errs"
 	"github.com/yzletter/go-kit/slicex"
 	"golang.org/x/exp/constraints"
 )
@@ -37,7 +37,7 @@ func (heap *PriorityQueue[T]) Top() (T, error) {
 	}
 
 	var t T
-	return t, errors.New("go-kit: 队列为空")
+	return t, errs.ErrEmpty
 }
 
 // Push 插入新元素

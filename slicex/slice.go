@@ -1,7 +1,7 @@
 package slicex
 
 import (
-	"errors"
+	"github.com/yzletter/go-kit/gokit/errs"
 	"github.com/yzletter/go-kit/setx"
 	"golang.org/x/exp/constraints"
 )
@@ -10,7 +10,7 @@ import (
 func Insert[T any](target []T, val T, idx int) ([]T, error) {
 
 	if idx < 0 || idx > len(target) {
-		return nil, errors.New("插入非法位置")
+		return nil, errs.ErrInvalidIndex
 	}
 
 	var t T
@@ -28,7 +28,7 @@ func Insert[T any](target []T, val T, idx int) ([]T, error) {
 // Delete 删除下标
 func Delete[T any](target []T, idx int) ([]T, error) {
 	if idx < 0 || idx > len(target)-1 {
-		return nil, errors.New("删除非法位置")
+		return nil, errs.ErrInvalidIndex
 	}
 	length := len(target)
 	for i := idx; i <= length-2; i++ {
@@ -111,7 +111,7 @@ func Find[T comparable](target []T, val T) (int, error) {
 			return i, nil
 		}
 	}
-	return -1, errors.New("元素不存在")
+	return -1, errs.ErrNotExist
 }
 
 // Shrink 对切片进行缩容

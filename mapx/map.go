@@ -1,7 +1,7 @@
 package mapx
 
 import (
-	"errors"
+	"github.com/yzletter/go-kit/gokit/errs"
 )
 
 // Keys 返回 map 中所有的键
@@ -43,11 +43,11 @@ func KeysAndValues[K comparable, V any](target map[K]V) ([]K, []V) {
 func ToMap[K comparable, V any](keys []K, values []V) (map[K]V, error) {
 
 	if keys == nil || values == nil {
-		return nil, errors.New("keys 与 values 均不可为nil")
+		return nil, errs.ErrInvalidParameter
 	}
 
 	if len(keys) != len(values) {
-		return nil, errors.New("传入参数不符合要求")
+		return nil, errs.ErrInvalidParameter
 	}
 
 	mp := map[K]V{}

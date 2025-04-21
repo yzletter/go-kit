@@ -1,7 +1,7 @@
 package queuex
 
 import (
-	"errors"
+	"github.com/yzletter/go-kit/gokit/errs"
 	"github.com/yzletter/go-kit/slicex"
 )
 
@@ -45,7 +45,7 @@ func (dq *Deque[T]) PushBack(val T) error {
 func (dq *Deque[T]) Front() (T, error) {
 	if dq.Empty() {
 		var t T
-		return t, errors.New("队列为空")
+		return t, errs.ErrEmpty
 	}
 	return dq.data[0], nil
 }
@@ -54,7 +54,7 @@ func (dq *Deque[T]) Front() (T, error) {
 func (dq *Deque[T]) Back() (T, error) {
 	if dq.Empty() {
 		var t T
-		return t, errors.New("队列为空")
+		return t, errs.ErrEmpty
 	}
 	return dq.data[dq.Size()-1], nil
 }

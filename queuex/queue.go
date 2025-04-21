@@ -1,7 +1,7 @@
 package queuex
 
 import (
-	"errors"
+	"github.com/yzletter/go-kit/gokit/errs"
 	"github.com/yzletter/go-kit/slicex"
 )
 
@@ -39,7 +39,7 @@ func (q *Queue[T]) Front() (T, error) {
 		return q.data[0], nil
 	}
 	var t T
-	return t, errors.New("go-kit: 队列为空")
+	return t, errs.ErrEmpty
 }
 
 // Push 新元素入队
@@ -58,7 +58,7 @@ func (q *Queue[T]) Back() (T, error) {
 		return q.data[q.Size()-1], nil
 	}
 	var t T
-	return t, errors.New("go-kit: 队列为空")
+	return t, errs.ErrEmpty
 }
 
 // Empty 判断队空
