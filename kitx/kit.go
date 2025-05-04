@@ -5,7 +5,7 @@ func ToPtr[T any](t T) *T {
 }
 
 // Pair 类型
-type Pair[K comparable, V any] struct {
+type Pair[K any, V any] struct {
 	First  K
 	Second V
 }

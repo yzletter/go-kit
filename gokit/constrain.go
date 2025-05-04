@@ -6,6 +6,10 @@ type RealNumber interface {
 		~float32 | ~float64
 }
 
+type SegmentTreeNumber interface {
+	~int | ~float64
+}
+
 type Number interface {
 	RealNumber | ~complex64 | ~complex128
 }

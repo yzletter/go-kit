@@ -62,10 +62,10 @@
     - Empty: 判断栈空
     - Clear: 清空栈
 - 数学: (mathx)
-  - GCD: 求 a, b 最大公约数
-  - LCM: 求 a, b 最小公倍数
-  - IsPrime: 判断素数
-  - QMI: 求 a ^ k % p
+  - 最大公约数 GCD: 求 a, b 最大公约数
+  - 最小公倍数 LCM: 求 a, b 最小公倍数
+  - 试除法 IsPrime: 判断素数
+  - 快速幂 QMI: 求 a ^ k % p
 - Map: (mapx)
   - 辅助方法
     - Keys: 返回 map 中的所有键
