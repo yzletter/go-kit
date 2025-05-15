@@ -4,6 +4,7 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
+// todo待更新
 type SegmentTree[T constraints.Ordered] struct {
 	length int //	树的大小
 	tr     []T

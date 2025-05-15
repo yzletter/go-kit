@@ -12,6 +12,7 @@ type LRUCache[K comparable, V any] struct {
 	mp       map[K]*node[kitx.Pair[K, V]]
 }
 
+// NewLRUCache 构造函数 每一个 Node 包含一个 K-V 键值对
 func NewLRUCache[K comparable, V any](capacity int) *LRUCache[K, V] {
 
 	return &LRUCache[K, V]{
